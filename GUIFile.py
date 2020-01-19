@@ -1,10 +1,12 @@
 from tkinter import *
 import tkinter
 from tkinter.filedialog import askopenfilename
+filePath = ""
 
 def buttonClicked ():
+    global filePath
     filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
-    print(filename)
+    filePath = filename
     return
 
 class MyFirstGUI:
@@ -18,7 +20,7 @@ class MyFirstGUI:
 
         #Entry bar for path
         path = "";
-        E1 = Entry(master, bd =5, width = 50, textvariable = path)
+        E1 = Entry(master, bd =5, width = 50, textvariable = filePath)
         E1.place(relx = 0,rely = 0.1)
 
         #Browse button
@@ -29,17 +31,17 @@ class MyFirstGUI:
         def filterVessels ():
             selectedRegion = region.get()
             
-            if (selectedRegion = "Maritime"):
+            if (selectedRegion == "Maritime"):
                 selectedRegion = "M"
-            if (selectedRegion = "Pacific"):
+            if (selectedRegion == "Pacific"):
                 selectedRegion = "P"
-            if (selectedRegion = "Quebec"):
+            if (selectedRegion == "Quebec"):
                 selectedRegion = "Q"
-            if (selectedRegion = "Golf"):
+            if (selectedRegion == "Gulf"):
                 selectedRegion = "G"
-            if (selectedRegion = "Central and Arctic"):
+            if (selectedRegion == "Central and Arctic"):
                 selectedRegion = "C"
-            if (selectedRegion = "Newfoundland and Labrador"):
+            if (selectedRegion == "Newfoundland and Labrador"):
                 selectedRegion = "N"
                 
             speedChecked = var1.get()
@@ -71,8 +73,7 @@ class MyFirstGUI:
                     int(initY)
                 else:
                     print("Validate all fields")
-                
-            print ("filter")
+          
 
         def parseData ():
             E1.get()
@@ -138,7 +139,7 @@ class MyFirstGUI:
         #region drop down mentu
         region = StringVar(master)
         region.set("All Regions") # default value
-        w = OptionMenu(master, region, "Central and Arctic", "Maritime", "Newfoundland and Labrador","Pacific","Quebec","Golf")
+        w = OptionMenu(master, region, "Central and Arctic", "Maritime", "Newfoundland and Labrador","Pacific","Quebec","Gulf")
         w.place(relwidth = 0.2, relheight = 0.0750, relx = .750, rely = 0.085)
 
 
